@@ -78,7 +78,7 @@ class _StartingRewardScreenState extends State<StartingRewardScreen> {
                     height: 20.h,
                   ),
                   GestureDetector(
-                    onTap: (points > 999) ? _alert(context) : null,
+                    onTap: () => (points > 999) ? _alert(context) : null,
                     child: Container(
                       height: 135.w,
                       width: 350.h,
