@@ -70,8 +70,6 @@ class _Checkout3ViewState extends State<Checkout3View> {
   final TextEditingController memoController = TextEditingController();
   Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   Future<int> _points;
- 
-
 
   void checkStatus() {
     print('Checking Status ... $isCheckBoxSelect');
@@ -117,7 +115,7 @@ class _Checkout3ViewState extends State<Checkout3View> {
                 basketProvider.checkoutCalculationHelper.shippingCost
                     .toString(),
                 userLoginProvider.user.data.area.areaName,
-                memoController.text, 
+                memoController.text,
                 valueHolder);
 
         if (_apiStatus.data != null) {
@@ -366,15 +364,15 @@ class _Checkout3ViewState extends State<Checkout3View> {
     // Do something when payment succeeds
     print('success');
     Future<void> _incrementPoints() async {
-    final SharedPreferences prefs = await _prefs;
-    final int points = (prefs.getInt('points') ?? 0) + 100;
+      final SharedPreferences prefs = await _prefs;
+      final int points = (prefs.getInt('points') ?? 0) + 25;
 
-    setState(() {
-      _points = prefs.setInt("points", points).then((bool success) {
-        return points;
+      setState(() {
+        _points = prefs.setInt("points", points).then((bool success) {
+          return points;
+        });
       });
-    });
-  }
+    }
 
     print(response);
 
@@ -387,7 +385,7 @@ class _Checkout3ViewState extends State<Checkout3View> {
         Provider.of<BasketProvider>(context, listen: false);
     if (userProvider.user != null && userProvider.user.data != null) {
       final PsValueHolder valueHolder =
-            Provider.of<PsValueHolder>(context, listen: false);
+          Provider.of<PsValueHolder>(context, listen: false);
       final PsResource<TransactionHeader> _apiStatus =
           await transactionSubmitProvider.postTransactionSubmit(
               userProvider.user.data,
@@ -506,7 +504,7 @@ class _Checkout3ViewState extends State<Checkout3View> {
 
         if (userProvider.user != null && userProvider.user.data != null) {
           final PsValueHolder valueHolder =
-            Provider.of<PsValueHolder>(context, listen: false);
+              Provider.of<PsValueHolder>(context, listen: false);
           final PsResource<TransactionHeader> _apiStatus =
               await transactionSubmitProvider.postTransactionSubmit(
                   userProvider.user.data,

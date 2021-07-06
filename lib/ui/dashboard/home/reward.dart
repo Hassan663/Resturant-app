@@ -32,15 +32,17 @@ class StartingRewardScreen extends StatefulWidget {
 
 class _StartingRewardScreenState extends State<StartingRewardScreen> {
   Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  Future<int> _points;
-  int points = 1000;
+  int _points = 1000;
+
+  Future<void> getRewardPoints() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    _points = prefs.getInt('points') ?? 0;
+  }
+
   @override
-  void initState() async {
+  void initState() {
     super.initState();
-    _points = _prefs.then((SharedPreferences prefs) {
-      return (prefs.getInt('points') ?? 0);
-    });
-    points = await _points;
+    //getRewardPoints();
   }
 
   @override
@@ -84,14 +86,14 @@ class _StartingRewardScreenState extends State<StartingRewardScreen> {
                     height: 20.h,
                   ),
                   GestureDetector(
-                    onTap: () => (points > 999) ? _alert(context) : null,
+                    onTap: () => (_points > 999) ? _alert(context) : null,
                     child: Container(
                       height: 135.w,
                       width: 350.h,
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.amber, width: 2.w),
                           borderRadius: BorderRadius.circular(20.r)),
-                      child: rewardsBuilder(points: points),
+                      child: rewardsBuilder(points: _points),
                     ),
                   ),
                   SvgPicture.asset(
@@ -147,6 +149,82 @@ class _StartingRewardScreenState extends State<StartingRewardScreen> {
                                 fontSize: 14.sp, fontWeight: FontWeight.w700))),
                         child: Text('Send Invite')),
                   ),
+                  SizedBox(
+                    height: 15.h,
+                  ),
+                  _points == 1000
+                      ? SizedBox(
+                          child: TextButton(
+                              onPressed: () {
+                                Widget okButton = FlatButton(
+                                  child: Text(
+                                    "OK",
+                                    style: TextStyle(
+                                        fontFamily: 'Product Sans',
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.amber,
+                                        letterSpacing: 1.5),
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _points = 0;
+                                    });
+                                    Future<void> setRewardPoints() async {
+                                      final SharedPreferences prefs =
+                                          await SharedPreferences.getInstance();
+                                      await prefs.setInt('points', _points);
+                                    }
+
+                                    Navigator.of(context).pop();
+                                  },
+                                );
+
+                                // set up the AlertDialog
+                                AlertDialog alert = AlertDialog(
+                                  backgroundColor: Colors.white,
+                                  title: Text(
+                                    "Link Sent",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.normal,
+                                        fontFamily: 'Product Sans',
+                                        color: Colors.black,
+                                        letterSpacing: 1.5),
+                                  ),
+                                  content: Text(
+                                    "You can now have a free delivery. Yay!!!",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.normal,
+                                        color: Colors.black,
+                                        letterSpacing: 1.5),
+                                  ),
+                                  actions: [
+                                    okButton,
+                                  ],
+                                );
+
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return alert;
+                                  },
+                                );
+                              },
+                              style: ButtonStyle(
+                                  elevation: MaterialStateProperty.all(5.0),
+                                  backgroundColor: MaterialStateProperty.all(
+                                      Color(0xFFFFBC00)),
+                                  foregroundColor:
+                                      MaterialStateProperty.all(Colors.white),
+                                  padding: MaterialStateProperty.all(
+                                      EdgeInsets.symmetric(
+                                          vertical: 14, horizontal: 32)),
+                                  textStyle: MaterialStateProperty.all(
+                                      TextStyle(
+                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.w700))),
+                              child: Text('Free Delivery')),
+                        )
+                      : SizedBox(height: 13.h),
                 ],
               ),
             ),
@@ -185,7 +263,7 @@ class _StartingRewardScreenState extends State<StartingRewardScreen> {
         if (value == true) {
           setState(
             () {
-              points = 0;
+              _points = 0;
             },
           );
         }
