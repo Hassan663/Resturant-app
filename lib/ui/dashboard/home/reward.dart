@@ -31,10 +31,16 @@ class StartingRewardScreen extends StatefulWidget {
 }
 
 class _StartingRewardScreenState extends State<StartingRewardScreen> {
+  Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  Future<int> _points;
   int points = 1000;
   @override
-  void initState() {
+  void initState() async {
     super.initState();
+    _points = _prefs.then((SharedPreferences prefs) {
+      return (prefs.getInt('points') ?? 0);
+    });
+    points = await _points;
   }
 
   @override
