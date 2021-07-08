@@ -32,7 +32,7 @@ class StartingRewardScreen extends StatefulWidget {
 
 class _StartingRewardScreenState extends State<StartingRewardScreen> {
   Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  int _points = 1000;
+  int _points = 0;
 
   Future<void> getRewardPoints() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -42,7 +42,7 @@ class _StartingRewardScreenState extends State<StartingRewardScreen> {
   @override
   void initState() {
     super.initState();
-    //getRewardPoints();
+    getRewardPoints();
   }
 
   @override
@@ -91,7 +91,8 @@ class _StartingRewardScreenState extends State<StartingRewardScreen> {
                       height: 135.w,
                       width: 350.h,
                       decoration: BoxDecoration(
-                          border: Border.all(color: Colors.amber, width: 2.w),
+                          border:
+                              Border.all(color: Color(0xff6f4e37), width: 2.w),
                           borderRadius: BorderRadius.circular(20.r)),
                       child: rewardsBuilder(points: _points),
                     ),
@@ -139,7 +140,7 @@ class _StartingRewardScreenState extends State<StartingRewardScreen> {
                         style: ButtonStyle(
                             elevation: MaterialStateProperty.all(5.0),
                             backgroundColor:
-                                MaterialStateProperty.all(Color(0xFFFFBC00)),
+                                MaterialStateProperty.all(Color(0xFF6f4e37)),
                             foregroundColor:
                                 MaterialStateProperty.all(Colors.white),
                             padding: MaterialStateProperty.all(
@@ -162,7 +163,7 @@ class _StartingRewardScreenState extends State<StartingRewardScreen> {
                                     style: TextStyle(
                                         fontFamily: 'Product Sans',
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.amber,
+                                        color: Color(0xff6f4e37),
                                         letterSpacing: 1.5),
                                   ),
                                   onPressed: () {
@@ -183,7 +184,7 @@ class _StartingRewardScreenState extends State<StartingRewardScreen> {
                                 AlertDialog alert = AlertDialog(
                                   backgroundColor: Colors.white,
                                   title: Text(
-                                    "Link Sent",
+                                    "Congragulations",
                                     style: TextStyle(
                                         fontWeight: FontWeight.normal,
                                         fontFamily: 'Product Sans',

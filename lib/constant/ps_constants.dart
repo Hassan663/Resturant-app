@@ -171,7 +171,7 @@ class PsConst {
   ///
   /// Home Page Consts
   ///
-  static const String mainMenu = 'mainMenu';
+  static const String mainMenu = 'All Categories';
   static const String specialCollection = 'specialCollection';
   static const String featuredItem = 'featuredItem';
 

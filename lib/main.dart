@@ -44,7 +44,7 @@ Future<void> main() async {
         carPlay: false,
         criticalAlert: false,
         provisional: false,
-        sound: true );
+        sound: true);
   }
 
   /// Update the iOS foreground notification presentation options to allow

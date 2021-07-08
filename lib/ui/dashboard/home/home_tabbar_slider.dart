@@ -15,9 +15,6 @@ import 'package:flutterrestaurant/viewobject/holder/product_parameter_holder.dar
 
 import 'package:draggable_fab/draggable_fab.dart';
 
-
-
-
 class HomeTabbarProductListView extends StatefulWidget {
   const HomeTabbarProductListView({
     Key key,
@@ -604,7 +601,6 @@ class __FloatingActionButtonState extends State<_FloatingActionButton>
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
-            
             Container(
               margin: const EdgeInsets.symmetric(horizontal: PsDimens.space8),
               child: ScaleTransition(
@@ -661,9 +657,7 @@ class __FloatingActionButtonState extends State<_FloatingActionButton>
               child: AnimatedBuilder(
                 animation: widget.controller,
                 child: Icon(
-                  widget.controller.isDismissed
-                      ? Icons.restaurant_menu
-                      : Icons.restaurant_menu,
+                  widget.controller.isDismissed ? Icons.coffee : Icons.coffee,
                   color: PsColors.white,
                 ),
                 builder: (BuildContext context, Widget child) {

@@ -1,8 +1,8 @@
 {
-  "app_name": "Flutter Restaurant",
-  "dashboard__main_menu": "Main Menu",
-  "dashboard__special_collection": "Special Offers",
-  "dashboard__featured_items": "Featured Items",
+  "app_name": "COSY COFFEE",
+  "dashboard__main_menu": "All Categories",
+  "dashboard__special_collection": "Sandwiches",
+  "dashboard__featured_items": "Sides",
   "force_update__update": "UPDATE",
   "user_status__deleted": "Your account is deleted by Admin",
   "user_status__banned": "Your account is banned by Admin",

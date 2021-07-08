@@ -81,9 +81,9 @@ class PsColors {
   ///
   /// Common Theme
   ///
-  static const Color _c_main_color = Color(0xFFFFBC00);
+  static const Color _c_main_color = Color(0xFf6f4e37);
   static const Color _c_main_light_color = Color(0xFFFFF3D3);
-  static const Color _c_main_dark_color = Color(0xFFDDA200);
+  static const Color _c_main_dark_color = Color(0xFF6f4e37);
 
   static const Color _c_white_color = Colors.white;
   static const Color _c_black_color = Colors.black;
@@ -97,7 +97,7 @@ class PsColors {
   static const Color _c_apple_login_color = Color(0xFF111111);
   static const Color _c_discount_color = Color(0xFFFF4D4D);
 
-  static const Color _c_rating_color = Colors.yellow;
+  static const Color _c_rating_color = Color(0xff6f4e37);
 
   static const Color ps_ctheme__color_about_us = Colors.cyan;
   static const Color ps_ctheme__color_application = Colors.blue;

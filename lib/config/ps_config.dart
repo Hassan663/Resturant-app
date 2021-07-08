@@ -23,18 +23,20 @@ class PsConfig {
   /// API URL
   /// Change your backend url
   ///
-  static const String ps_core_url = 'https://www.panacea-soft.com/flutter-restaurant-admin-demo';
-  
+  static const String ps_core_url =
+      'https://www.panacea-soft.com/flutter-restaurant-admin-demo';
+
   static const String ps_app_url = ps_core_url + '/index.php/';
 
   static const String ps_app_image_url = ps_core_url + '/uploads/';
 
-  static const String ps_app_image_thumbs_url = ps_core_url + '/uploads/thumbnail/';
+  static const String ps_app_image_thumbs_url =
+      ps_core_url + '/uploads/thumbnail/';
 
+  static const String GOOGLE_PLAY_STORE_URL =
+      'https://play.google.com/store/apps';
 
-   static const String GOOGLE_PLAY_STORE_URL = 'https://play.google.com/store/apps';
-
-   static const String APPLE_APP_STORE_URL = 'https://www.apple.com/app-store';
+  static const String APPLE_APP_STORE_URL = 'https://www.apple.com/app-store';
 
   ///
   /// Facebook Key
@@ -45,7 +47,7 @@ class PsConfig {
   /// Admob Setting
   ///
   static bool showAdMob = true;
-  
+
   static String androidAdMobAdsIdKey = 'ca-app-pub-0000000000000000~0000000000';
   static String androidAdMobUnitIdApiKey =
       'ca-app-pub-0000000000000000/0000000000';
@@ -156,7 +158,7 @@ class PsConfig {
   ///
   /// Tmp Image Folder Name
   ///
-  static const String tmpImageFolderName = 'FlutterRestaurant';
+  static const String tmpImageFolderName = 'Cosy Coffee';
 
   ///
   /// Image Loading
